@@ -87,6 +87,10 @@ class ListingController extends Controller
 
     public function delete(Listing $listing)
     {
+        if($listing->logo) {
+            $logo = explode('/', $listing->logo);
+            unlink(public_path() . '\\logos\\' . $logo[1]);
+        }
         $listing->delete();
         flash()->success('Job deleted successfully!');
         return redirect('/');
