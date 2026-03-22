@@ -34,10 +34,14 @@
                         <td>{{ $job->title }}</td>                        
                         <td>{{ $job->description }}</td> 
                         <td>
-                            <div class="btn-group">
-                            <a href="{{ url('listing/edit/' . $job->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="{{ url('listing/delete/' . $job->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
-                        </div>
+                            <div class="btn-group btn-group-sm">
+                                <a href="{{ url('listing/edit/' . $job->id) }}" class="btn btn-outline-info m-2 ms-0 float-end btn-sm"><i class="fa fa-pencil"></i> Edit</a>
+                                <form action="{{ url('listing/delete/' . $job->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-outline-danger mt-2 ms-0 float-end btn-sm"><i class="fa fa-trash"></i> Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach ?>         
