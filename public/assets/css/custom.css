@@ -1,0 +1,46 @@
+.homeFigure {
+    height: 300px;
+    width: 100%;
+    background-color: darkslategray;
+    color: white;
+    margin: 0 0 20px;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
+
+.homecontainer .card {
+    margin: 0 0 20px;
+    height: 200px;
+}
+
+.homecontainer .card a {
+    color: black;
+    text-decoration: none;
+}
+
+.homecontainer .card:hover {
+    margin: 0 0 20px;
+    height: 200px;
+    box-shadow: 10px 10px lightblue;
+}
+
+nav.bg-dark a {
+    color: lightyellow !important;
+}
+
+.footer {
+    background-color: darkslategray;
+    color: white;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 20px;
+    /* position: fixed; */
+    bottom: 0;
+}
+
+.content {
+    margin-bottom: 100px;
+}
