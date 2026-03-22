@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -59,5 +60,12 @@ class UserController extends Controller
 
         flash()->success('Logout successful');
         return redirect('/');        
+    }
+
+    public function jobs()
+    {
+        $jobs = DB::table('listings')->where('user_id', auth()->id())->paginate(10);
+        // dd($jobs);
+        return view('user/jobs', ['jobs' => $jobs]);
     }
 }

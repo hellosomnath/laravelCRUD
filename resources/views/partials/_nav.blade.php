@@ -2,10 +2,11 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ url('/') }}">LaravelCRUD</a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="col-md-2 offset-md-10">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <div class="col-md-6 offset-md-6">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0 float-end">
             @auth
-              <li class="nav-item nav-link">{{ auth()->user()->name }}</li>
+              <li class="nav-item nav-link">Welcome {{ auth()->user()->name }}</li>
+              <li class="nav-item"><a class="nav-link" href="{{ url('jobs') }}"><i class="fa fa-notepad"></i> Jobs</a></li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('logout') }}"><i class="fa fa-sign-out"></i> Logout</a>
                 </li>

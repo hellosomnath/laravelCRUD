@@ -18,12 +18,6 @@ class ListingController extends Controller
         return view('listings/create');
     }
 
-    public function show(Listing $listing)
-    {
-        // $listing = Listing::find($id);
-        return view('listings/show', ['listing' => $listing]);
-    }
-
     public function store(Request $request)
     {
         $formFields = $request->validate([
@@ -40,21 +34,25 @@ class ListingController extends Controller
         if($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'logo');
         }
-        // dd($formFields);
-
+        
+        $formFields['user_id'] = auth()->id();
         Listing::create($formFields);
 
         flash()->success('Job created successfully!');
-        // flash()
-        //     ->option('position', 'top-center')  // Position on the screen
-        //     ->option('timeout', 5000)           // How long to display (milliseconds)
-        //     ->option('rtl', true)               // Right-to-left support
-        //     ->success('Your changes have been saved!');
         return redirect('/');
+    }
+
+    public function show(Listing $listing)
+    {
+        return view('listings/show', ['listing' => $listing]);
     }
 
     public function edit(Listing $listing)
     {
+        if($listing->user_id != auth()->id()) {
+            return redirect('/');
+        }
+
         return view('listings/edit', ['listing' => $listing]);
     }
 

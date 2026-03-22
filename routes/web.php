@@ -17,3 +17,4 @@ Route::post('register', [UserController::class, 'create'])->middleware('guest');
 Route::get('login', [UserController::class, 'login'])->middleware('guest')->name('login');
 Route::post('authenticate', [UserController::class, 'authenticate'])->middleware('guest');
 Route::get('logout', [UserController::class, 'logout'])->middleware('auth');
+Route::get('jobs', [UserController::class, 'jobs'])->middleware('auth');

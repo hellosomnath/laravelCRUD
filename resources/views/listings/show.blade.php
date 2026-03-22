@@ -5,7 +5,8 @@
 @section('content')
 <div class="container">
     <a href="{{ url('/') }}" class="btn btn-outline-secondary m-2 ms-0 btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
-    @auth
+    
+    @if($listing->user_id == auth()->id())
     <div class="btn-group btn-group-sm float-end">
         <a href="{{ url('listing/edit/' . $listing->id) }}" class="btn btn-outline-info m-2 ms-0 float-end btn-sm"><i class="fa fa-pencil"></i> Edit</a>
         <form action="{{ url('listing/delete/' . $listing->id) }}" method="post">
@@ -14,7 +15,8 @@
             <button type="submit" class="btn btn-outline-danger mt-2 ms-0 float-end btn-sm"><i class="fa fa-trash"></i> Delete</button>
         </form>
     </div>
-    @endauth
+    @endif
+    
     <div class="card">
     <img src="{{ ($listing->logo) ? asset($listing->logo) : asset('assets/images/no-image.png')}}" class="d-block mx-auto mt-2" alt="..." style="max-height:300px" >
         <div class="card-body">
