@@ -91,7 +91,7 @@ class ListingController extends Controller
         }
         $listing->delete();
         flash()->success('Job deleted successfully!');
-        return redirect('/');
+        return redirect('/jobs');
     }
 
     
